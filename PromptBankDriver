@@ -1,0 +1,108 @@
+import java.util.*;
+public class PromptBankDriver {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		PromptBank t= new PromptBank();
+		t.getRandomQuestionTrunk();
+		t.getRandomStatementTrunk();
+		
+		int i;
+		String answer = " ";
+		String response = null;
+		do {
+		System.out.println("Hello, My Name is Eliza. What is your name?");
+		response = sc.nextLine();
+		System.out.println("Hello, "+ response +". Tell me what is in your mind in 1 sentence.");
+		response = sc.nextLine();
+		
+		String [] arr = response.split(" ",2);
+		String first = arr[0];
+		String last = arr[arr.length - 1];
+		if(response.contains("?")) {
+			System.out.println(t.getRandomQuestionTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", last));	
+			response = sc.nextLine();
+			
+			for(i = 0; i < response.length(); i++) {
+				arr = response.split(" ",0);
+				 first = arr[0];
+				 last = arr[arr.length - 1];
+				if(response.contains("?")) {
+					System.out.println(t.getRandomQuestionTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", last));	
+					response = sc.nextLine();
+					
+				}
+				else if(response.contains(".")) {
+					System.out.println(t.getRandomStatementTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", last));		
+					response = sc.nextLine();
+				}
+				else if(response.contains("!")) {
+					System.out.println("WOW! SO DRAMATIC!" + t.getRandomStatementTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", first));
+					response = sc.nextLine();
+				}
+			}
+			
+		}
+		else if(response.contains(".")) {
+			System.out.println(t.getRandomStatementTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", last));		
+			response = sc.nextLine();
+			 
+			for(i = 0; i < response.length(); i++) {
+				arr = response.split(" ",0);
+				 first = arr[0];
+				 last = arr[arr.length - 1];
+				if(response.contains("?")) {
+					System.out.println(t.getRandomQuestionTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", last));	
+					response = sc.nextLine();
+					
+				}
+				else if(response.contains(".")) {
+					System.out.println(t.getRandomStatementTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", last));		
+					response = sc.nextLine();
+				}
+				else if(response.contains("!")) {
+					System.out.println("WOW! SO DRAMATIC!" + t.getRandomStatementTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", first));
+					response = sc.nextLine();
+				}
+			}
+		}
+		else if(response.contains("!")) { //this if statement 
+			System.out.println("WOW! SO DRAMATIC!" + t.getRandomStatementTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", first));
+			response = sc.nextLine();
+			for(i = 0; i < response.length(); i++) {
+				arr = response.split(" ",0);
+				 first = arr[0];
+				 last = arr[arr.length - 1];
+				if(response.contains("?")) {
+					System.out.println(t.getRandomQuestionTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", last));	
+					response = sc.nextLine();
+					
+				}
+				else if(response.contains(".")) {
+					System.out.println(t.getRandomStatementTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", last));		
+					response = sc.nextLine();
+				}
+				else if(response.contains("!")) {
+					System.out.println("WOW! SO DRAMATIC!" + t.getRandomStatementTrunk().replaceAll("BLANK1", first).replaceAll("BLANK2", first));
+					response = sc.nextLine();
+				}
+			}
+		}
+		// This the part where the user exits the program and will decide wether he/she  
+		// will continue the program or not by entering yes or no.
+		if(response.contains("exit")) 
+		System.out.println("Do you want to run the session again?");
+		answer = sc.nextLine();
+		
+		}
+		while (answer.equalsIgnoreCase("yes"));
+		
+		if (answer.equalsIgnoreCase("no")) 
+			System.out.println("Goodbye, until next time.");
+					
+	}
+}
+	
+
+	
+
+
